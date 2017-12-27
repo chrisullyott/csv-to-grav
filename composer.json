@@ -1,0 +1,13 @@
+{
+    "require" : {
+        "chrisullyott/php-file" : "dev-master",
+        "chrisullyott/php-csv" : "dev-master",
+        "league/html-to-markdown" : "dev-master",
+        "keyvanakbary/slugifier" : "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
