@@ -26,5 +26,5 @@ First, replace `example.csv` with the path of your spreadsheet. Then, fill in th
 Finally, run the script!
 
 ```
-$ php
+$ php convert.php
 ```
