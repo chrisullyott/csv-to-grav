@@ -4,7 +4,13 @@
 
 Some specific [migration assistants](https://learn.getgrav.org/migration) are available to help you do this, but if you just want to convert an arbitrary CSV into Grav posts, this tool can help.
 
-### convert.php
+## Setup
+
+Install dependencies with [Composer](https://getcomposer.org/).
+
+## Run
+
+Modify convert.php ...
 
 ```
 $conversion = new CsvToGrav('example.csv');
