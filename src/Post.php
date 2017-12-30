@@ -5,7 +5,7 @@
  */
 class Post
 {
-    private static $dateFormat = 'H:i m/d/Y';
+    private static $dateFormat = 'm/d/Y g:ia';
 
     public function __construct(array $data)
     {
