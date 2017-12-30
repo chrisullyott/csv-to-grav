@@ -11,6 +11,11 @@ $conversion->setColumnMap(array(
     'date'   => 'example_date_field',
     'html'   => 'example_html_field',
     'author' => 'example_author_field'
+
+$conversion->setMetaData(array(
+    'generator'    => 'Grav',
+    'og:locale'    => 'en_US',
+    'og:type'      => 'article'
 ));
 
 $count = $conversion->build();

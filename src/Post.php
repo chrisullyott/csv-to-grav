@@ -7,11 +7,13 @@ class Post
 {
     private static $dateFormat = 'm/d/Y g:ia';
 
-    public function __construct(array $data)
+    public function __construct(array $data, array $metaData = array())
     {
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }
+
+        $this->metaData = $metaData;
 
         $this->provision();
     }
@@ -44,13 +46,9 @@ class Post
                 'category' => $this->category,
                 'tag'      => $this->tag
             ),
-            'metadata' => array(
-                'author'    => $this->author,
-                'generator' => 'Grav',
-                'keywords'  => implode(', ', $this->tag),
-                'og:title'  => $this->title,
-                'og:type'   => 'article'
-            )
+            'metadata' => array_merge($this->metaData, array(
+                'og:title' => $this->title
+            ))
         );
 
         return Symfony\Component\Yaml\Yaml::dump($data);
