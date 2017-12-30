@@ -7,13 +7,14 @@ class Post
 {
     private static $dateFormat = 'm/d/Y g:ia';
 
-    public function __construct(array $data, array $metaData = array())
+    public function __construct(array $data, array $metaData, $isPublished = false)
     {
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }
 
         $this->metaData = $metaData;
+        $this->isPublished = $isPublished;
 
         $this->provision();
     }
@@ -38,10 +39,11 @@ class Post
     private function getHeaders()
     {
         $data = array(
-            'title'    => $this->title,
-            'slug'     => $this->slug,
-            'date'     => $this->date,
-            'author'   => $this->author,
+            'published' => $this->isPublished,
+            'title'     => $this->title,
+            'slug'      => $this->slug,
+            'date'      => $this->date,
+            'author'    => $this->author,
             'taxonomy' => array(
                 'category' => $this->category,
                 'tag'      => $this->tag

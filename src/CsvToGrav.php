@@ -16,6 +16,7 @@ class CsvToGrav
     private $rows = array();
     private $posts = array();
     private $metaData = array();
+    private $isPublished;
 
     public function __construct($file, array $columnMap = array())
     {
@@ -41,6 +42,13 @@ class CsvToGrav
     public function setMetaData(array $metaData)
     {
         $this->metaData = $metaData;
+
+        return $this;
+    }
+
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }
@@ -79,7 +87,7 @@ class CsvToGrav
                     $data[$gravKey] = $row[$columnName];
                 }
 
-                $this->posts[] = new Post($data, $this->metaData);
+                $this->posts[] = new Post($data, $this->metaData, $this->isPublished);
             }
         }
 

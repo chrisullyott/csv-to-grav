@@ -18,6 +18,8 @@ $conversion->setMetaData(array(
     'og:type'      => 'article'
 ));
 
+$conversion->setIsPublished(false);
+
 $count = $conversion->build();
 
 echo "Created {$count} items.\n";
