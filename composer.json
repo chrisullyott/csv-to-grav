@@ -1,13 +1,34 @@
 {
-    "require" : {
-        "chrisullyott/php-file"  : "dev-master",
-        "chrisullyott/php-csv"   : "dev-master",
-        "league/html-to-markdown": "4.6.*",
-        "keyvanakbary/slugifier" : "4.0.*",
-        "symfony/yaml"           : "3.4.*"
+    "name":"chrisullyott/csv-to-grav",
+    "description":"Migrate a site to Grav, a flat-file CMS.",
+    "keywords":[
+        "php",
+        "grav",
+        "cms"
+    ],
+    "homepage":"https://github.com/chrisullyott/csv-to-grav",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Chris Ullyott",
+            "email":"contact@chrisullyott.com",
+            "homepage":"http://www.chrisullyott.com"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/chrisullyott/csv-to-grav/issues",
+        "source":"https://github.com/chrisullyott/csv-to-grav"
     },
-    "autoload": {
-        "classmap": [
+    "require":{
+        "php":">=5.6.0",
+        "chrisullyott/php-file":"dev-master",
+        "chrisullyott/php-csv":"dev-master",
+        "league/html-to-markdown":"4.6.*",
+        "keyvanakbary/slugifier":"4.0.*",
+        "symfony/yaml":"3.4.*"
+    },
+    "autoload":{
+        "classmap":[
             "src/"
         ]
     }
