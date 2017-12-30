@@ -1,9 +1,10 @@
 {
     "require" : {
-        "chrisullyott/php-file" : "dev-master",
-        "chrisullyott/php-csv" : "dev-master",
-        "league/html-to-markdown" : "dev-master",
-        "keyvanakbary/slugifier" : "dev-master"
+        "chrisullyott/php-file"  : "dev-master",
+        "chrisullyott/php-csv"   : "dev-master",
+        "league/html-to-markdown": "4.6.*",
+        "keyvanakbary/slugifier" : "4.0.*",
+        "symfony/yaml"           : "3.4.*"
     },
     "autoload": {
         "classmap": [
