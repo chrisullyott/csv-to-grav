@@ -33,6 +33,16 @@ class Post
         return $this;
     }
 
+    private function getAllMetaData()
+    {
+        $toMerge = array(
+            'generator' => 'Grav',
+            'og:title' => $this->title
+        );
+
+        return array_merge($toMerge, $this->metaData);
+    }
+
     private function getHeaders()
     {
         $data = array(
@@ -45,9 +55,7 @@ class Post
                 'category' => $this->category,
                 'tag'      => $this->tag
             ),
-            'metadata' => array_merge($this->metaData, array(
-                'og:title' => $this->title
-            ))
+            'metadata' => $this->getAllMetaData()
         );
 
         return trim(Symfony\Component\Yaml\Yaml::dump($data)) . "\n";
