@@ -113,6 +113,18 @@ class CsvToGrav
         return $this;
     }
 
+    private function uniqueDirPath($path)
+    {
+        $i = 0;
+        $s = '';
+
+        while (is_dir("{$path}{$s}")) {
+            $s = '-' . ++$i;
+        }
+
+        return "{$path}{$s}";
+    }
+
     public function build()
     {
         $this->preflight();
@@ -120,15 +132,11 @@ class CsvToGrav
         $created = 0;
 
         foreach ($this->getPosts() as $post) {
-            $path = File::path(
-                $this->outputDir,
-                $post->slug,
-                'item.md'
-            );
+            $filePath = File::path($this->outputDir, $post->slug, 'item.md');
+            $dirPath = self::uniqueDirPath(dirname($filePath));
+            File::createDir($dirPath);
 
-            File::createDir(dirname($path));
-
-            if (file_put_contents($path, $post->getGravFile())) {
+            if (file_put_contents($filePath, $post->getGravFile())) {
                 $created++;
             }
         }
