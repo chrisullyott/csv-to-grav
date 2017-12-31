@@ -16,7 +16,7 @@ class CsvToGrav
     private $rows = array();
     private $posts = array();
     private $metaData = array();
-    private $isPublished;
+    private $isPublished = false;
 
     public function __construct($file, array $columnMap = array())
     {

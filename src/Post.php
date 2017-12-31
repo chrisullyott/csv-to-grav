@@ -7,7 +7,7 @@ class Post
 {
     private static $dateFormat = 'm/d/Y g:ia';
 
-    public function __construct(array $data, array $metaData, $isPublished = false)
+    public function __construct(array $data, array $metaData = array(), $isPublished = false)
     {
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
