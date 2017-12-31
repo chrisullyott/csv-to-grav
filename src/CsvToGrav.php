@@ -113,7 +113,7 @@ class CsvToGrav
         return $this;
     }
 
-    private function uniqueDirPath($path)
+    private function uniqueDir($path)
     {
         $i = 0;
         $s = '';
@@ -132,9 +132,10 @@ class CsvToGrav
         $created = 0;
 
         foreach ($this->getPosts() as $post) {
-            $filePath = File::path($this->outputDir, $post->slug, 'item.md');
-            $dirPath = self::uniqueDirPath(dirname($filePath));
+            $dirPath = self::uniqueDir(File::path($this->outputDir, $post->slug));
             File::createDir($dirPath);
+
+            $filePath = File::path($dirPath, 'item.md');
 
             if (file_put_contents($filePath, $post->getGravFile())) {
                 $created++;
