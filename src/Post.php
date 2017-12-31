@@ -30,9 +30,6 @@ class Post
         $tags = self::explodeList($this->tag);
         $this->tag = array_map('strtolower', $tags);
 
-        $converter = new League\HTMLToMarkdown\HtmlConverter();
-        $this->markdown = $converter->convert($this->html);
-
         return $this;
     }
 
@@ -53,16 +50,23 @@ class Post
             ))
         );
 
-        return Symfony\Component\Yaml\Yaml::dump($data);
+        return trim(Symfony\Component\Yaml\Yaml::dump($data)) . "\n";
+    }
+
+    private function getBody()
+    {
+        $converter = new League\HTMLToMarkdown\HtmlConverter();
+
+        return trim($converter->convert($this->html)) . "\n";
     }
 
     public function getGravFile()
     {
         $file  = "---\n";
         $file .= "# https://learn.getgrav.org/content\n\n";
-        $file .= trim($this->getHeaders()) . "\n";
+        $file .= $this->getHeaders();
         $file .= "---\n\n";
-        $file .= "{$this->markdown}";
+        $file .= $this->getBody();
 
         return $file;
     }
