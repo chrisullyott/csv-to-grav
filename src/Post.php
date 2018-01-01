@@ -50,8 +50,8 @@ class Post
             'title'     => $this->title,
             'slug'      => $this->slug,
             'date'      => $this->date,
-            'author'    => $this->author,
             'taxonomy' => array(
+                'author'   => $this->author,
                 'category' => $this->category,
                 'tag'      => $this->tag
             ),
